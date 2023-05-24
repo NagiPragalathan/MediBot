@@ -7,9 +7,9 @@ import random
 import nltk
 from nltk.corpus import wordnet
 from django.http import JsonResponse
-nltk.download('punkt')
-nltk.download('averaged_perceptron_tagger')
-nltk.download('wordnet')
+# nltk.download('punkt')
+# nltk.download('averaged_perceptron_tagger')
+# nltk.download('wordnet')
 
 conversation = {"hello":["hello","hey, hello how can i help you"],"who are you":["i am lms chatbot"," am a chatbot"],"how are you":["I'm great, thank you! How can I assist you today?" ,"I'm great, thank you!"],"what's the weather like today":["The weather is sunny and warm today. It's a perfect day to go outside!"],"How can I reset my password?":["To reset your password, you can go to the login page and click on the 'Forgot Password'."],"what are the tools available":['''<ul>
   <li>User Management</li>
@@ -111,13 +111,13 @@ def respond_to_input(user_input):
     question_words = synonyms["what"]
     if user_input.lower().startswith(tuple(question_words)):
         # Extract the main verb from the question
-        tokens = nltk.word_tokenize(user_input.lower())
-        pos_tags = nltk.pos_tag(tokens)
-        verbs = [token for token, pos in pos_tags if pos.startswith('V')]
-        if len(verbs) > 0:
-            main_verb = verbs[0]
+        # tokens = nltk.word_tokenize(user_input.lower())
+        # pos_tags = nltk.pos_tag(tokens)
+        # verbs = [token for token, pos in pos_tags if pos.startswith('V')]
+        # if len(verbs) > 0:
+        #     main_verb = verbs[0]
             # Check if the main verb has a similar meaning to "is"
-            if have_similar_meanings(main_verb, "is"):
+            # if have_similar_meanings(main_verb, "is"):
                 link = get_stackoverflow_link(user_input)
                 code = get_answer_from_given_link(link)
                 if code:
