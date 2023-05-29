@@ -16,16 +16,20 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from base.views import home, about, chatbot_res
+from base.views import home, about, chatbot_res, login_form,signup,logout1
 
 from django.conf.urls.static import static
 from MediBot import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',home,name="home"),
+    path('home',home,name="home"),
     path('about',about,name="about"),
     path('chatbot_res',chatbot_res,name="chatbot_res"),
+    path('signup', signup, name='signup'),
+    path('', login_form, name='login'),
+    path('logout', logout1, name='logout'),
+    
 ]
 
 
